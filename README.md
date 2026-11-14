@@ -52,7 +52,7 @@ The following is the original Windows suite invocation for reference, not a veri
 $env:MHYPER_WORKSPACE="$PWD\workspace_vm"
 $env:WANDB_MODE="online"
 $env:WANDB_PROJECT="mhyper-link-completion"
-$env:WANDB_RUN_GROUP="paper1-main-seed42-ep200"
+$env:WANDB_RUN_GROUP="mhyper-main-seed42-ep200"
 python scripts\run_paper1_full_suite.py --continue-on-error 2>&1 |
   Tee-Object -FilePath "$PWD\paper1_full_suite.log"
 ```
