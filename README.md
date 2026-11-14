@@ -2,6 +2,12 @@
 
 > Scope: this repository is a research reproduction scaffold, not evidence of a complete paper reproduction. Full clean-environment installation, dataset preparation, and GPU reruns remain unverified.
 
+## Reported hardware and environment limits
+
+The group's rental record for the M-Hyper attempt lists Windows 10, an Intel Core i5 (generation not recorded), and an NVIDIA RTX 5070. This describes the rented machine; it does not establish the exact hardware or software used by every historical run. The W&B export did not preserve the historical Python, PyTorch, or CUDA versions. The commands below use Python 3.12 as a setup choice, not as a verified historical version.
+
+The W&B project link is included in the report, but anonymous public viewing has not been verified. Do not treat the run URLs as public evidence until they have been opened successfully in a signed-out browser session.
+
 The upstream M-Hyper source is not redistributed in this repository because its public repository does not specify a license. Obtain the source directly from the authors at https://github.com/zjukg/M-Hyper and place its checkout at `third_party/m_hyper/source/` before running the adapter. This project does not include the group's local patch to upstream files. The historical run provenance and exact upstream changes remain unverified.
 
 Install from the source checkout in editable mode as shown below. A regular non-editable wheel install was checked and resolves the upstream-source directory inside the Python environment, where it does not exist; that installation mode is not supported by this package layout.
@@ -11,7 +17,7 @@ This repository contains the group's experiment registry, adapter, configuration
 ## Windows GPU setup
 
 ```powershell
-cd C:\Users\<USER>\paper_1
+cd C:\Users\<USER>\mhyper-reproduction
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
@@ -62,7 +68,7 @@ Get-ChildItem .\workspace_vm -Recurse | Sort-Object LastWriteTime -Descending | 
 
 Use the W&B project and run links in the report. Do not call CPU smoke tests or failed split runs official results.
 
-The `WANDB_PROJECT` setting above selects the destination for new runs. It does not move existing runs. The staging folder does not include the datasets, cached features or experiment logs.
+The `WANDB_PROJECT` setting above selects the destination for new runs. It does not move existing runs. This repository does not include the datasets, cached features or experiment logs.
 
 ## Minimal local checks
 
