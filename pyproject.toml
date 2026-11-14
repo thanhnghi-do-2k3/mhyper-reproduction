@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mhyper-research-lab"
+version = "0.1.0"
+description = "Local-first experiment registry and training lab for M-Hyper"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.110",
+  "numpy>=1.24",
+  "pydantic>=2.0",
+  "scikit-learn>=1.2",
+  "torch>=2.0",
+  "tqdm>=4.64",
+  "uvicorn>=0.23",
+  "wandb>=0.16",
+]
+
+[project.scripts]
+mhyper = "mhyper_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]

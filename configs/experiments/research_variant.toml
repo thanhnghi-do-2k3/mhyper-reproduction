@@ -1,0 +1,35 @@
+[run]
+name = "mhyper-smoke-research-regularized"
+kind = "research"
+variant = "research_variant"
+seed = 7
+
+[dataset]
+name = "SYNTHETIC_SMOKE"
+registered_version = "fixture-v1"
+
+[model]
+name = "M_Hyper_B"
+rank = 8
+
+[training]
+optimizer = "Adagrad"
+learning_rate = 0.1
+batch_size = 8
+max_epochs = 3
+validation_interval_epochs = 1
+regularizer = "wN3"
+regularization_strength = 0.0005
+
+[research]
+reconstruction_coefficient = 0.01
+
+[evaluation]
+checkpoint_selection = "best_validation_mrr"
+ranking = "filtered"
+missing_entity_sides = ["lhs", "rhs"]
+report_hits_at = [1, 3, 10]
+
+[execution]
+device = "cpu"
+store_per_query_ranks = false

@@ -1,0 +1,37 @@
+# Execution-only pilot; this is not the configuration of a historical run.
+[run]
+name = "mhyper-db15k-cpu-holdout-smoke"
+kind = "pilot"
+variant = "evaluation_corrected"
+seed = 42
+
+[dataset]
+name = "DB15K"
+registered_version = "local-v1"
+
+[model]
+name = "M_Hyper_B"
+rank = 8
+
+[training]
+optimizer = "Adagrad"
+learning_rate = 0.1
+batch_size = 256
+max_epochs = 1
+validation_interval_epochs = 1
+regularizer = "wN3"
+regularization_strength = 0.005
+example_limit = 512
+
+[evaluation]
+checkpoint_selection = "best_validation_mrr"
+ranking = "filtered"
+validation_source = "train_holdout"
+validation_holdout_fraction = 0.1
+missing_entity_sides = ["lhs", "rhs"]
+report_hits_at = [1, 3, 10]
+query_limit = 8
+
+[execution]
+device = "cpu"
+store_per_query_ranks = false
