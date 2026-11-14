@@ -6,7 +6,7 @@
 
 The group's rental record for the M-Hyper attempt lists Windows 10, an Intel Core i5 (generation not recorded), and an NVIDIA RTX 5070. This describes the rented machine; it does not establish the exact hardware or software used by every historical run. The W&B export did not preserve the historical Python, PyTorch, or CUDA versions. The commands below use Python 3.12 as a setup choice, not as a verified historical version.
 
-The W&B project link is included in the report, but anonymous public viewing has not been verified. Do not treat the run URLs as public evidence until they have been opened successfully in a signed-out browser session.
+The [M-Hyper W&B project](https://forge.coreweave.com/wandb/nghidt-hcmus/mhyper-link-completion/workspace?nw=c9t57at1lic) contains 37 historical runs and was checked in an incognito session on 14 November 2026; runs and charts were visible. Moving runs did not move their associated artifacts. This confirms access to the logged histories, not benchmark equivalence or complete artifacts.
 
 The upstream M-Hyper source is not redistributed in this repository because its public repository does not specify a license. Obtain the source directly from the authors at https://github.com/zjukg/M-Hyper and place its checkout at `third_party/m_hyper/source/` before running the adapter. This project does not include the group's local patch to upstream files. The historical run provenance and exact upstream changes remain unverified.
 
@@ -46,12 +46,12 @@ python -m mhyper_lab.cli data register --name MKG-Y --path "$PWD\workspace_vm\up
 
 Do not run the suite below unchanged on the locally inspected DB15K files: `run_paper1_full_suite.py` selects `configs/reproduction/db15k_paper.toml` with `validation_source = "provided"`, while those files have overlapping validation data and the current split checker rejects them. `configs/reproduction/db15k.toml` specifies the train-holdout variant used by one archived seed-42 run. The exact configuration of the historical W&B multi-seed runs remains unverified. A full rerun requires an independently checked dataset and split policy.
 
-The following is the original Windows suite invocation for reference, not a verified end-to-end rerun from this staging folder. New main, ablation and robustness runs belong in the [M-Hyper W\&B project](https://forge.coreweave.com/wandb/nghidt-hcmus/graph-paper-1-mhyper):
+The following is the original Windows suite invocation for reference, not a verified end-to-end rerun from this repository. New main, ablation and robustness runs belong in the [M-Hyper W&B project](https://forge.coreweave.com/wandb/nghidt-hcmus/mhyper-link-completion/workspace?nw=c9t57at1lic):
 
 ```powershell
 $env:MHYPER_WORKSPACE="$PWD\workspace_vm"
 $env:WANDB_MODE="online"
-$env:WANDB_PROJECT="graph-paper-1-mhyper"
+$env:WANDB_PROJECT="mhyper-link-completion"
 $env:WANDB_RUN_GROUP="paper1-main-seed42-ep200"
 python scripts\run_paper1_full_suite.py --continue-on-error 2>&1 |
   Tee-Object -FilePath "$PWD\paper1_full_suite.log"
